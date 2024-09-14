@@ -1,13 +1,37 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { newCustomer } from "../connection/Customer";
+import { newCustomer, sendEmail } from "../connection/Customer";
+import { findBlockedUser } from "../connection/BlockedUser";
 import SlideShow from "./SlideShow";
 
 export default function Home() {
+  const [showSubmit, setShowSubmit] = useState(true);
+  const [showRequested,setShowRequested] = useState(false);
+  const [showRejected,setShowRejected] = useState(false);
   const [isSmallScreen, setIsSmallScreen] = useState(false);
+
+  const Rejected=()=>{
+    setShowSubmit(false);
+    setShowRejected(true);
+    setTimeout(()=>{
+      setShowRejected(false);
+      setShowSubmit(true);
+    },3000);
+  }
+
+  const Requested=()=>{
+    setShowSubmit(false);
+    setShowRequested(true);
+    setTimeout(()=>{
+      setShowRequested(false);
+      setShowSubmit(true);
+    },3000);
+  }
+
   const [bookingDetails, setBookingDetails] = useState({
     name: "",
     contact: "",
+    email: "",
     pickupDate: "",
     dropoffDate: "",
     pickupAddress: "",
@@ -24,28 +48,37 @@ export default function Home() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    newCustomer(bookingDetails).then((res) => {
-      setBookingDetails({
-        name: "",
-        contact: "",
-        pickupDate: "",
-        dropoffDate: "",
-        pickupAddress: "",
-        dropoffAddress: "",
-      });
+    findBlockedUser(bookingDetails).then((res) => {
+      if (res.data) {
+        Rejected();
+      }
+      else{
+        newCustomer(bookingDetails).then((res) => {
+          sendEmail(bookingDetails);
+          Requested();
+          setBookingDetails({
+            name: "",
+            contact: "",
+            email: "",
+            pickupDate: "",
+            dropoffDate: "",
+            pickupAddress: "",
+            dropoffAddress: "",
+          });
+        });
+      }
     });
-    console.log(bookingDetails);
   };
 
   const navigate = useNavigate();
 
   useEffect(() => {
     const handleResize = () => {
-      setIsSmallScreen(window.innerWidth <= 900);
+      setIsSmallScreen(window.innerWidth <= 950);
     };
-
+    
     window.addEventListener("resize", handleResize);
-    handleResize(); // Check screen size on initial render
+    handleResize(); 
 
     return () => window.removeEventListener("resize", handleResize);
   }, []);
@@ -82,7 +115,8 @@ export default function Home() {
                 value={bookingDetails.name}
                 onChange={handleChange}
                 placeholder="Your Name"
-                className="w-full rounded-lg text-sm bg-zinc-200 block text-center focus:outline-none focus:ring-0"
+                className="w-full rounded-lg text-sm bg-zinc-200 block text-center focus:outline-none"
+                required
               />
             </div>
             <div className="flex-1 bg-zinc-200 rounded-lg p-2 m-1">
@@ -98,7 +132,25 @@ export default function Home() {
                 value={bookingDetails.contact}
                 onChange={handleChange}
                 placeholder="Mobile Number"
-                className="w-full rounded-lg text-sm bg-zinc-200 block text-center focus:outline-none focus:ring-0"
+                className="w-full rounded-lg text-sm bg-zinc-200 block text-center focus:outline-none"
+                required
+              />
+            </div>
+            <div className="flex-1 bg-zinc-200 rounded-lg p-2 m-1">
+              <label
+                className="text-muted text-sm text-zinc-500 block text-center"
+                htmlFor="Email"
+              >
+                Email
+              </label>
+              <input
+                type="text"
+                name="email"
+                value={bookingDetails.email}
+                onChange={handleChange}
+                placeholder="Your Email"
+                className="w-full rounded-lg text-sm bg-zinc-200 block text-center focus:outline-none"
+                required
               />
             </div>
             <div className="flex-1 bg-zinc-200 rounded-lg p-2 m-1">
@@ -115,7 +167,8 @@ export default function Home() {
                 onChange={handleChange}
                 id="pickup-address"
                 placeholder="From: address, airport, hotel ..."
-                className="w-full rounded-lg bg-zinc-200 block text-center focus:outline-none focus:ring-0"
+                className="w-full rounded-lg bg-zinc-200 block text-center focus:outline-none"
+                required
               />
             </div>
             <div className="flex-1 bg-zinc-200 rounded-lg p-2 m-1">
@@ -131,7 +184,8 @@ export default function Home() {
                 name="pickupDate"
                 value={bookingDetails.pickupDate}
                 onChange={handleChange}
-                className="w-full block text-gray-400 text-center bg-zinc-200 text-sm rounded-lg focus:outline-none focus:ring-0"
+                className="w-full block text-gray-400 text-center bg-zinc-200 text-sm rounded-lg focus:outline-none"
+                required
               />
             </div>
             <div className="flex-1 bg-zinc-200 rounded-lg p-2 m-1">
@@ -148,7 +202,8 @@ export default function Home() {
                 value={bookingDetails.dropoffAddress}
                 onChange={handleChange}
                 placeholder="Distance, Hourly, Flat Rate"
-                className="w-full block text-center rounded-lg bg-zinc-200 text-sm focus:outline-none focus:ring-0"
+                className="w-full block text-center rounded-lg bg-zinc-200 text-sm focus:outline-none"
+                required
               />
             </div>
             <div className="flex-1 bg-zinc-200 rounded-lg p-2 m-1">
@@ -164,21 +219,46 @@ export default function Home() {
                 name="dropoffDate"
                 value={bookingDetails.dropoffDate}
                 onChange={handleChange}
-                className="w-full block text-center text-zinc-400 text-sm rounded-lg bg-zinc-200 focus:outline-none focus:ring-0"
+                className="w-full block text-center text-zinc-400 text-sm rounded-lg bg-zinc-200 focus:outline-none"
+                required
               />
             </div>
             <button
               type="submit"
-              className="bg-blue-600 text-white rounded-lg p-1 m-1 flex flex-col items-center shadow-lg w-32 h-16"
+              className={`${showSubmit?"flex":"hidden"} bg-blue-600 text-white rounded-lg p-1 m-1 flex-col items-center shadow-lg w-32 h-16`}
             >
               <img
                 alt="calendar-icon"
-                src="https://openui.fly.dev/openui/24x24.svg?text=📅"
-                className="mb-2 h-8"
+                src="https://img.icons8.com/?size=100&id=tIqOo7HYPQHK&format=png&color=000000"
+                className="mb-1 h-7"
               />
               <span className="text-lg font-medium">Book Now</span>
             </button>
+            <button
+              className={`${showRequested?"flex":"hidden"} bg-green-600 text-white rounded-lg p-1 m-1 flex-col items-center shadow-lg w-32 h-16`}
+            >
+              <img
+                alt="calendar-icon"
+                src="https://ik.imagekit.io/abhi023/gifs/icons8-tick.gif?updatedAt=1725956856775"
+                className="mb-1 h-7 rounded-full"
+              />
+              <span className="text-lg font-medium">Requested</span>
+            </button>
+            <button
+              type="submit"
+              className={`${showRejected?"flex":"hidden"} bg-red-500 text-white rounded-lg p-1 m-1 flex-col items-center shadow-lg w-32 h-16`}
+            >
+              <img
+                alt="calendar-icon"
+                src="https://ik.imagekit.io/abhi023/gifs/icons8-warning.gif?updatedAt=1726050663281"
+                className="mb-1 h-7 rounded-full bg-red-500"
+              />
+              <span className="text-lg font-medium">Rejected</span>
+            </button>
           </form>
+            <div>
+            <p className="block text-center text-red-400 mt-2">*You have to pay extra for 200 or 400 Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui.</p>
+            </div>
         </div>
       </div>
       <div>
@@ -311,7 +391,7 @@ export default function Home() {
             <div
               className="bg-white text-center p-6 rounded-lg shadow-lg border border-slate-200 transform transition-transform duration-1000 ease-in-out hover:-translate-y-2 relative"
               style={{
-                backgroundImage: `url('https://www.mychoize.com/mychoize-live/current/revamap_img/ride_line.svg')`,
+                backgroundImage: `url('https://ik.imagekit.io/abhi023/gifs/ride_line.svg')`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
@@ -319,7 +399,7 @@ export default function Home() {
             >
               <img
                 alt="Payment Options"
-                src="https://www.mychoize.com/mychoize-live/current/revamap_img/Payment_Options.png"
+                src="https://ik.imagekit.io/abhi023/gifs/Payment_Options.png"
                 className="mb-4 w-20 mx-auto"
               />
               <h3 className="text-xl font-semibold mb-2">
@@ -333,7 +413,7 @@ export default function Home() {
             <div
               className="bg-white text-center p-6 rounded-lg shadow-lg border border-slate-200 transform transition-transform duration-1000 ease-in-out hover:-translate-y-2 relative"
               style={{
-                backgroundImage: `url('https://www.mychoize.com/mychoize-live/current/revamap_img/ride_line_2.svg')`,
+                backgroundImage: `url('https://ik.imagekit.io/abhi023/gifs/ride_line_2.svg')`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
@@ -341,7 +421,7 @@ export default function Home() {
             >
               <img
                 alt="Easy Cancellation"
-                src="https://www.mychoize.com/mychoize-live/current/revamap_img/Easy_Cancellation.png"
+                src="https://ik.imagekit.io/abhi023/gifs/Easy_Cancellation.png"
                 className="mb-4 w-20 mx-auto"
               />
               <h3 className="text-xl font-semibold mb-2">Easy Cancellation</h3>
@@ -353,7 +433,7 @@ export default function Home() {
             <div
               className="bg-white text-center p-6 rounded-lg shadow-lg border border-slate-200 transform transition-transform duration-1000 ease-in-out hover:-translate-y-2 relative"
               style={{
-                backgroundImage: `url('https://www.mychoize.com/mychoize-live/current/revamap_img/ride_line_3.svg')`,
+                backgroundImage: `url('https://ik.imagekit.io/abhi023/gifs/ride_line_3.svg')`,
                 backgroundRepeat: "no-repeat",
                 backgroundSize: "cover",
                 backgroundPosition: "center",
@@ -361,7 +441,7 @@ export default function Home() {
             >
               <img
                 alt="Best Price Guarantee"
-                src="https://www.mychoize.com/mychoize-live/current/revamap_img/Best_Price.png"
+                src="https://ik.imagekit.io/abhi023/gifs/Best_Price.png"
                 className="mb-4 w-20 mx-auto"
               />
               <h3 className="text-xl font-semibold mb-2">

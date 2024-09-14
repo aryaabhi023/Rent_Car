@@ -66,8 +66,8 @@ export const getCar = asyncHandler(async (req, res) => {
 });
 
 export const deleteCar = asyncHandler(async (req, res) => {
-    const {carName} = req.params;
-    const deletedCar = await Car.findOneAndDelete({carName});
+    const {id} = req.params;
+    const deletedCar = await Car.findByIdAndDelete(id);
     return res.status(200).json(new ApiResponse(200,deletedCar,"Car deleted successfully"));
 });
 

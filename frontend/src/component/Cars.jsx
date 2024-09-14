@@ -29,11 +29,11 @@ export default function Cars() {
   return (
     <div className="bg-white min-h-screen p-4">
       <div className="overflow-y-scroll h-full max-h-[88vh] scrollbar-hide">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 mt-16 ">
           {cars.length>0 && cars.map((car, index) => (
             <div
               key={index}
-              className="w-full bg-gradient-to-r from-neutral-200/80  to-gray-200/80 text-neutral-800 p-2 shadow-lg mt-16 rounded-lg"
+              className="w-full bg-gradient-to-r from-neutral-200/80 to-gray-200/80 text-neutral-800 p-2 shadow-md rounded-lg border border-gray-300"
             >
               <h3 className="text-lg block text-center font-semibold">
                 {car.model}

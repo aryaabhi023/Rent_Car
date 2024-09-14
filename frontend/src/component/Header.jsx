@@ -3,7 +3,7 @@ import { useLocation } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const LINK_CLASSES =
-  "text-gray-300 dark:text-foreground px-3 py-2 rounded-md text-sm font-medium hover:text-primary dark:hover:text-primary-foreground transition-colors";
+  "text-gray-500 dark:text-foreground px-3 py-2 rounded-md text-sm font-medium hover:text-primary dark:hover:text-primary-foreground transition-colors";
 const ACTIVE_LINK_CLASSES = "text-orange-500";
 
 const NavLink = ({ href, label, active, onClick }) => (

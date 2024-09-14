@@ -7,7 +7,7 @@ const router=Router();
 router.route("/uploadCar").post(upload.single("image"),uploadCar);
 router.route("/getCars").get(getCars);
 router.route("/getCar").post(getCar);
-router.route("/deleteCar/:carName").delete(deleteCar);
+router.route("/deleteCar/:id").delete(deleteCar);
 
 export {router};
 

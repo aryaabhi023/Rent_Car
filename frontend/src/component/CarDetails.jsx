@@ -2,7 +2,8 @@ import React,{useState,useEffect} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTachometerAlt, faGasPump, faCogs, faSnowflake, faMapMarkerAlt } from '@fortawesome/free-solid-svg-icons';
 import { useParams } from 'react-router-dom';
-import { newCustomer } from '../connection/Customer';
+import { newCustomer,sendEmail } from '../connection/Customer';
+import { findBlockedUser } from '../connection/BlockedUser';
 import { getCar } from '../connection/Car';
 
 export default function CarDetails() {
@@ -10,11 +11,34 @@ export default function CarDetails() {
   const {id}=useParams();
  
   const [car,setCar]=useState({});
+  const [showSubmit, setShowSubmit] = useState(true);
+  const [showRequested,setShowRequested] = useState(false);
+  const [showRejected,setShowRejected] = useState(false);
+
+  const Rejected=()=>{
+    setShowSubmit(false);
+    setShowRejected(true);
+    setTimeout(()=>{
+      setShowRejected(false);
+      setShowSubmit(true);
+    },3000);
+  }
+
+  const Requested=()=>{
+    setShowSubmit(false);
+    setShowRequested(true);
+    setTimeout(()=>{
+      setShowRequested(false);
+      setShowSubmit(true);
+    },3000);
+  }
+
 
   
   const [bookingDetails, setBookingDetails] = useState({
     name: "",
     contact: "",
+    email: "",
     pickupDate: "",
     dropoffDate: "",
     pickupAddress: "",
@@ -30,8 +54,6 @@ export default function CarDetails() {
         ...prevDetails,
         carName: carData?.carName,
       }));
-    }).then(()=>{
-      console.log(bookingDetails);
     })
   },[id])
 
@@ -45,23 +67,31 @@ export default function CarDetails() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    newCustomer(bookingDetails).then((res) => {
-      setBookingDetails({
-        ...bookingDetails,
-        name: "",
-        contact: "",
-        pickupDate: "",
-        dropoffDate: "",
-        pickupAddress: "",
-        dropoffAddress: "",
-      });
+    findBlockedUser(bookingDetails).then((res) => {
+      if (res.data) {
+        Rejected();
+      }
+      else{
+        newCustomer(bookingDetails).then((res) => {
+          sendEmail(bookingDetails);
+          Requested();
+          setBookingDetails({
+            name: "",
+            contact: "",
+            email: "",
+            pickupDate: "",
+            dropoffDate: "",
+            pickupAddress: "",
+            dropoffAddress: "",
+          });
+        });
+      }
     });
-    console.log(bookingDetails);
   };
 
   return (
     <div className="bg-gray-100 min-h-screen p-6">
-      <div className="flex justify-center my-8">
+      <div className="flex justify-center my-12">
         <img src={car?.imgUrl} alt="Car Main" className=" rounded-lg" />
       </div>
 
@@ -102,8 +132,12 @@ export default function CarDetails() {
           </div>
         </div>
 
+          <div className='md:hidden'>
+            <p className="block text-center text-red-400 mt-2">*You have to pay extra for 200 or 400 Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui.</p>
+          </div>
+
         <form className="bg-white p-6 rounded-lg shadow-md w-full lg:w-1/3" onSubmit={handleSubmit}>
-          <h2 className="text-lg font-semibold mb-4">Book Information</h2>
+          <h2 className="text-lg font-semibold mb-4 text-center">Book Information</h2>
           <div className='flex justify-between gap-4'>
           <div className="mb-4 w-1/2">
             <label className="block text-sm font-medium text-gray-700">Name</label>
@@ -114,6 +148,7 @@ export default function CarDetails() {
               onChange={handleChange}
               className="mt-1 p-2 w-full border rounded-md"
               placeholder="Name"
+              required
             />
           </div>
           <div className="mb-4 w-1/2">
@@ -125,10 +160,24 @@ export default function CarDetails() {
               onChange={handleChange}
               className="mt-1 p-2 w-full border rounded-md"
               placeholder="Contact No."
+              required
             />
           </div>
           </div>
-          <div className="mb-4">
+          <div className='flex justify-between gap-4'>
+          <div className="mb-4 w-1/2">
+            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              type="text"
+              name="email"
+              value={bookingDetails.email}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border rounded-md"
+              placeholder="Email"
+              required
+            />
+          </div>
+          <div className="mb-4 w-1/2">
             <label className="block text-sm font-medium text-gray-700">Car Name</label>
             <input
               type="text"
@@ -138,6 +187,7 @@ export default function CarDetails() {
               className="mt-1 p-2 w-full border rounded-md"
               readOnly
             />
+          </div>
           </div>
           <div className='flex justify-between gap-4'>
           <div className="mb-4 w-1/2">
@@ -149,6 +199,7 @@ export default function CarDetails() {
               onChange={handleChange}
               className="mt-1 p-2 w-full border rounded-md"
               placeholder="Pickup Date"
+              required
             />
           </div>
           <div className="mb-4 w-1/2">
@@ -160,6 +211,7 @@ export default function CarDetails() {
               onChange={handleChange}
               className="mt-1 p-2 w-full border rounded-md"
               placeholder="Drop Off Date"
+              required
             />
           </div>
           </div>
@@ -173,6 +225,7 @@ export default function CarDetails() {
               onChange={handleChange}
               className="mt-1 p-2 w-full border rounded-md"
               placeholder="Pickup Address"
+              required
             />
           </div>
           <div className="mb-4 w-1/2">
@@ -184,6 +237,7 @@ export default function CarDetails() {
               onChange={handleChange}
               className="mt-1 p-2 w-full border rounded-md"
               placeholder="Drop Off Address"
+              required
             />
           </div>
           </div>
@@ -191,8 +245,14 @@ export default function CarDetails() {
             <span>Rent fee</span>
             <span className="font-semibold">₹{car?.price}/Day</span>
           </div>
-          <button type='submit' className="w-full bg-purple-600 text-white py-3 rounded-md font-semibold hover:bg-purple-700">
+          <button type='submit' className={`${showSubmit?"block":"hidden"} w-full bg-purple-600 text-white py-3 rounded-md font-semibold hover:bg-purple-700`}>
             Book
+          </button>
+          <button className={`${showRequested?"block":"hidden"} w-full bg-green-500 text-white py-3 rounded-md font-semibold hover:bg-green-600`}>
+            Requested
+          </button>
+          <button className={`${showRejected?"block":"hidden"} w-full bg-red-500 text-white py-3 rounded-md font-semibold hover:bg-red-600`}>
+            Rejected
           </button>
         </form>
       </div>

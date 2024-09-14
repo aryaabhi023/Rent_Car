@@ -1,13 +1,15 @@
 import mongoose from "mongoose";
 
-// name,contact no.,pick date and pick time, drop date and drop time
-
 const CustomerSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
     },
     contact: {
+        type: String,
+        required: true,
+    },
+    email: {
         type: String,
         required: true,
     },

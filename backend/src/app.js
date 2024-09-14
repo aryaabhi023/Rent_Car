@@ -3,6 +3,9 @@ import cors from "cors";
 import {ApiError} from "are_package";
 import {router as carRouter} from "./router/car.router.js";
 import {router as customerRouter} from "./router/customer.router.js";
+import {router as codeRouter} from "./router/code.router.js";
+import {router as blockedUserRouter} from "./router/blockeduser.router.js";
+import {router as addressRouter} from "./router/address.router.js";
 
 const app = express();
 
@@ -24,6 +27,10 @@ app.get("/", (req, res) => {
 
 app.use("/api/v1/car", carRouter);
 app.use("/api/v1/customer", customerRouter);
+app.use("/api/v1/code", codeRouter);
+app.use("/api/v1/blockeduser", blockedUserRouter);
+app.use("/api/v1/address", addressRouter);
+
 
 
 // Error handling middleware

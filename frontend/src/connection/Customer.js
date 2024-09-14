@@ -12,9 +12,19 @@ export const newCustomer=async(formData)=>{
     }
 }
 
-export const getAllCustomers=async()=>{
+export const getAllCustomers=async(formData)=>{
     try {
-        const {data}=await axios.get(api+'/getAllCustomers');
+        const {data}=await axios.post(api+'/getAllCustomers',formData);
+        return data.data;
+    } catch (error) {
+        console.log(error.message);
+        return null;
+    }
+}
+
+export const sendEmail=async(bookingDetails)=>{
+    try {
+        const {data}=await axios.post(api+'/sendEmail',bookingDetails);
         return data;
     } catch (error) {
         console.log(error.message);

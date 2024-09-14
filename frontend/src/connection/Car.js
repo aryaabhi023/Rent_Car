@@ -31,3 +31,13 @@ export const uploadCar=async(formData)=>{
         return error.message; 
     }
 }
+
+export const deleteCar=async(id)=>{
+    try {
+        const {data}=await axios.delete(api+'/deleteCar/'+id);
+        return data;
+    } catch (error) {
+        console.log(error.message);
+        return error.message;
+    }
+}
