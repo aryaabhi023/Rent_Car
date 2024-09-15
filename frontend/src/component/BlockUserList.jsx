@@ -9,7 +9,6 @@ import {
 
 export default function BlockUserList() {
   const [blockedUsers, setBlockedUsers] = useState([]);
-  const [CustomerName, setCustomerName] = useState("");
   const [CustomerEmail, setCustomerEmail] = useState("");
   const [CustomerNumber, setCustomerNumber] = useState("");
 
@@ -21,10 +20,9 @@ export default function BlockUserList() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (CustomerName !== "" && CustomerNumber !== "" && CustomerEmail !== "") {
-      createBlockedUser({ name:CustomerName, phone:CustomerNumber, email:CustomerEmail }).then((res) => {
+    if ( CustomerNumber !== "" && CustomerEmail !== "") {
+      createBlockedUser({ phone:CustomerNumber, email:CustomerEmail }).then((res) => {
         setBlockedUsers([res.data, ...blockedUsers]);
-        setCustomerName("");
         setCustomerNumber("");
         setCustomerEmail("");
       });
@@ -36,17 +34,7 @@ export default function BlockUserList() {
       <div>
         <h1 className="text-center text-2xl font-bold mt-20">Blocked Users</h1>
         <div>
-          <form className="grid md:grid-cols-4 justify-center" onSubmit={handleSubmit}>
-            <input
-              type="text"
-              placeholder="Enter the Customer Name"
-              className="border-2 border-red-200 p-2 m-3 rounded-full focus:outline-none"
-              value={CustomerName}
-              onChange={(e) => {
-                setCustomerName(e.target.value);
-              }}
-              required
-            />
+          <form className="grid md:grid-cols-3 justify-center" onSubmit={handleSubmit}>
             <input
               type="text"
               placeholder="Enter the Customer Email"
@@ -100,12 +88,6 @@ export default function BlockUserList() {
                 />
               </button>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-                <div className="flex items-center space-x-2">
-                  <label className="font-medium text-muted-foreground">
-                    Name: 
-                  </label>
-                  <p className="text-foreground">{user?.name}</p>
-                </div>
                 <div className="flex items-center space-x-2">
                   <label className="font-medium text-muted-foreground">
                     Phone:

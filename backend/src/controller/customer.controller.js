@@ -77,8 +77,6 @@ export const sendEmail = async (req, res) => {
         subject: "Your Booking Confirmation",
         text: `Dear ${bookingDetails.name},\n\nYour booking details are as follows:\nCar Name: ${bookingDetails.carName}\nPickup Date: ${bookingDetails.pickupDate}\nPickup Address: ${bookingDetails.pickupAddress}\nDropoff Date: ${bookingDetails.dropoffDate}\nDropoff Address: ${bookingDetails.dropoffAddress}\n\nThank you for choosing us!`
       });
-
-      console.log("Customer email sent: %s", info.messageId);
     }
 
     async function sendOwnerBookingEmail(ownerEmail, bookingDetails) {
@@ -88,8 +86,6 @@ export const sendEmail = async (req, res) => {
         subject: "New Booking Received",
         text: `Dear Owner,\n\nA new booking has been made with the following details:\nCustomer Name: ${bookingDetails.name}\nContact: ${bookingDetails.contact}\nCar Name: ${bookingDetails.carName}\nPickup Date: ${bookingDetails.pickupDate}\nPickup Address: ${bookingDetails.pickupAddress}\nDropoff Date: ${bookingDetails.dropoffDate}\nDropoff Address: ${bookingDetails.dropoffAddress}\n\nPlease confirm the booking at your earliest convenience.`
        });
-
-      console.log("Owner email sent: %s", info.messageId);
     }
 
     async function handleBooking(bookingDetails) {
