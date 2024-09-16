@@ -209,6 +209,7 @@ export default function CarDetails() {
               name="dropoffDate"
               value={bookingDetails.dropoffDate}
               onChange={handleChange}
+              min={bookingDetails.pickupDate}
               className="mt-1 p-2 w-full border rounded-md"
               placeholder="Drop Off Date"
               required

@@ -28,15 +28,26 @@ export default function ContactUs() {
             ))}
         </div>
       </div>
+      <div className="fixed right-5 bottom-5">
+        <a
+          href="https://wa.me/9368764601?text=Hello%20there!"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            alt="whatsapp-icon"
+            src="https://ik.imagekit.io/abhi023/gifs/icons8-whatsapp.gif"
+            className="w-full"
+          />
+        </a>
+      </div>
     </div>
   );
 }
 
 const LocationCard = ({ location, address, phone }) => {
   return (
-    <div
-      className="bg-neutral-100 p-6 rounded-lg shadow-lg m-4 text-center text-black transform transition-transform duration-500 ease-in-out hover:-translate-y-5 hover:bg-neutral-300 w-full md:w-1/3"
-    >
+    <div className="bg-neutral-100 p-6 rounded-lg shadow-lg m-4 text-center text-black transform transition-transform duration-500 ease-in-out hover:-translate-y-5 hover:bg-neutral-300 w-full md:w-1/3">
       <div className="flex justify-center mb-4">
         <img
           alt="location-icon"

@@ -219,6 +219,7 @@ export default function Home() {
                 name="dropoffDate"
                 value={bookingDetails.dropoffDate}
                 onChange={handleChange}
+                min={bookingDetails.pickupDate}
                 className="w-full block text-center text-zinc-400 text-sm rounded-lg bg-zinc-200 focus:outline-none"
                 required
               />
