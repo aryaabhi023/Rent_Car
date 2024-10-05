@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api='http://13.201.21.154/api/v1/blockeduser';
+const api='https://9ynbc2y1pb.execute-api.ap-south-1.amazonaws.com/prod/api/v1/blockeduser';
 
 export const createBlockedUser=async(formData)=>{
     try {

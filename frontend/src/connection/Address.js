@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api='http://13.201.21.154/api/v1/address';
+const api='https://9ynbc2y1pb.execute-api.ap-south-1.amazonaws.com/prod/api/v1/address';
 
 export const getAllAddress=async()=>{
     try {

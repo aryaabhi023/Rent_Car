@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api='http://13.201.21.154/api/v1/code';
+const api='https://9ynbc2y1pb.execute-api.ap-south-1.amazonaws.com/prod/api/v1/code';
 
 export const getCodes=async()=>{
     try {
