@@ -14,7 +14,7 @@ export default function ContactUs() {
     <div className="w-full h-screen bg-white">
       <div className="flex flex-col items-center py-10 mt-16">
         <h1 className="text-2xl font-bold text-center">
-          We are Available 24x7 @ 9348582126
+          We are Available 24x7 @ 8093271439
         </h1>
         <div className="mt-8 flex flex-wrap justify-center w-full max-w-6xl">
           {addresses.length > 0 &&

@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api='http://localhost:7010/api/v1/address';
+const api='http://13.201.21.154/api/v1/address';
 
 export const getAllAddress=async()=>{
     try {
@@ -15,7 +15,6 @@ export const getAllAddress=async()=>{
 export const createAddress=async(address)=>{
     try {
         const {data}=await axios.post(api+'/createAddress',address);
-        console.log(data);
         return data;
     } catch (error) {
         console.log(error);

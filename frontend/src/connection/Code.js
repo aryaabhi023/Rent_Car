@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api='http://localhost:7010/api/v1/code';
+const api='http://13.201.21.154/api/v1/code';
 
 export const getCodes=async()=>{
     try {

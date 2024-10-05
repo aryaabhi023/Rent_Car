@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api='http://localhost:7010/api/v1/blockeduser';
+const api='http://13.201.21.154/api/v1/blockeduser';
 
 export const createBlockedUser=async(formData)=>{
     try {

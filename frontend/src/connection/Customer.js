@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const api='http://localhost:7010/api/v1/customer';
+const api='http://13.201.21.154/api/v1/customer';
 
 export const newCustomer=async(formData)=>{
     try {
