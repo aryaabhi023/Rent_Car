@@ -386,7 +386,7 @@ export default function Home() {
       <div>
         <div className="container mx-auto py-10 m-4 p-4">
           <h2 className="text-3xl font-bold text-center mb-8">
-            Why rent with BrandName?
+            Why rent with Driveezz?
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div
@@ -457,213 +457,168 @@ export default function Home() {
         </div>
       </div>
       <div className="container mx-auto p-8 bg-neutral-100">
-        <h2 className="text-4xl font-bold mb-6 text-primary">
-          Cities We Are Available In
+        <h2 className="text-4xl font-bold mb-6 text-center">
+          Places We Are Available In
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 md:gap-4 gap-2">
           <div>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near IndraDhanu Market
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Jagamara 
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Siripur
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Khandagiri
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Iginia
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Kalinga Nagar
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Patrapada
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Tomando
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Jagamohan Nagar
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Baramunda Bus-Stand
             </p>
           </div>
           <div>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Sum Hospital
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Nayapalli
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Lingaraj Temple
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Airport
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Master Caneteen
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Vani Vihar
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Jaydev Vihar
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Rasulgarh
             </p>
             <p className="text-xs text-muted-foreground">
-              Self-Drive Car Rental
+              Self-Drive Car Rental Near Saheed Nagar
             </p>
           </div>
           <div>
-            <p className="text-xs text-muted-foreground">Car Subscription</p>
-            <p className="text-xs text-muted-foreground">Car Subscription</p>
-            <p className="text-xs text-muted-foreground">Car Subscription</p>
-            <p className="text-xs text-muted-foreground">Car Subscription</p>
-            <p className="text-xs text-muted-foreground">Car Subscription</p>
-            <p className="text-xs text-muted-foreground">Car Subscription</p>
-            <p className="text-xs text-muted-foreground">Car Subscription</p>
-            <p className="text-xs text-muted-foreground">Car Subscription</p>
-            <p className="text-xs text-muted-foreground">Car Subscription</p>
-            <p className="text-xs text-muted-foreground">Car Subscription</p>
+            <p className="text-xs text-muted-foreground">
+              Self-Drive Car Rental Near Kalinga Hospital
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Self-Drive Car Rental Near Patia
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Self-Drive Car Rental Near Chandrasekharpur
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Self-Drive Car Rental Near KIIT College
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Self-Drive Car Rental Near ITER College 
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Self-Drive Car Rental Near Railway-Station
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Self-Drive Car Rental Near Bapuji-Nagar
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Self-Drive Car Rental Near Acharya Vihar
+            </p>
+            <p className="text-xs text-muted-foreground">
+              Self-Drive Car Rental Near MAYFAIR
+            </p>
           </div>
         </div>
       </div>
       <div className="container mx-auto p-6 block text-center">
         <h1 className="text-3xl font-bold text-primary mb-4">
-          Self-Drive Car with Brandname
+          Self-Drive Car Driveezz
         </h1>
 
         <section className="mb-8">
           <h2 className="text-sm font-semibold text-secondary">
-            Rent A Car from BrandName Anywhere in India
+            Rent A Car from Driveezz Anywhere in Odisha
           </h2>
           <p className="text-xs">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Repellat
-            labore voluptates maiores dolores earum molestiae nostrum, mollitia
-            incidunt quam ut tenetur suscipit ab quis sunt laboriosam quasi
-            reiciendis in obcaecati atque voluptatum tempore illum.
+          Experience the convenience of renting a car from Driveezz, the premier self-drive car rental service, available in every corner of Odisha. Whether you're exploring the vibrant cities or venturing into the scenic countryside, Driveezz ensures a hassle-free car rental experience anywhere in the state.
           </p>
         </section>
 
         <section className="mb-8">
           <h2 className="text-sm font-semibold text-secondary">
-            MyChoize - Best Self Drive Car Rental in India
+            Driveezz - Best Self Drive Car Rental in Odisha
           </h2>
           <p className="text-xs">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-            nihil ipsum consectetur? In repudiandae incidunt ex non impedit
-            voluptatum officia minus earum accusantium.
+          Driveezz offers the best self-drive car rental service in Odisha, providing a wide range of well-maintained vehicles to ensure a comfortable and reliable travel experience. Whether you're planning a business trip or a leisurely getaway, Driveezz is your top choice for exploring Odisha with convenience and freedom.
           </p>
           <p className="text-xs">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure, est
-            enim expedita cumque ipsum quos quis tempore animi labore fuga a
-            tenetur temporibus hic sunt autem asperiores quam. Sit incidunt quis
-            doloribus illum.
+          Whether you're navigating the bustling streets of Bhubaneswar or embarking on a scenic road trip to Puri, Driveezz ensures that your journey is seamless, comfortable, and fully under your control. With easy online booking, affordable pricing, and 24/7 customer support, Driveezz makes renting a car effortless and enjoyable.
+
+Say goodbye to the hassles of traditional car rentals and embrace the freedom of exploring Odisha at your own pace with Driveezz. Safety, comfort, and reliability – that's our commitment to you.
           </p>
         </section>
 
         <section className="mb-8">
           <h2 className="text-sm font-semibold text-secondary">
-            Daily and Monthly Car Rental by BrandName
+            Daily and Monthly Car Rental by Driveezz
           </h2>
           <p className="text-xs">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Explicabo
-            aspernatur a doloribus repudiandae illum. Ducimus pariatur adipisci
-            voluptatem modi, praesentium nulla recusandae dolor error optio
-            repudiandae quasi illum reprehenderit, cupiditate nobis ipsam magnam
-            cumque ab accusamus. Pariatur ad deleniti aliquam est vero fugit
-            nemo.
+          Driveezz offers flexible daily and monthly self-drive car rental plans tailored to suit your needs. Whether you need a car for a day to run errands or for an extended period during a long stay in Odisha, Driveezz provides a wide variety of vehicles to match your preferences and budget.
+
+With our daily rental option, enjoy the convenience of short-term car hire, perfect for spontaneous trips or quick getaways. For those seeking longer-term solutions, our monthly rental packages offer cost-effective rates, ideal for extended vacations, business commitments, or personal use.
+
+No matter the duration, Driveezz ensures that every journey is smooth, comfortable, and hassle-free with our top-notch customer service and well-maintained vehicles.
           </p>
         </section>
 
         <section className="mb-8">
           <h2 className="text-sm font-semibold text-secondary">
-            Why buy a car
+            Why rent a car
           </h2>
           <p className="text-xs">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Eaque
-            quisquam debitis sequi nobis labore ullam optio animi officiis
-            veritatis eveniet. Unde, dolor dolore enim sapiente aperiam,
-            similique saepe sint quas fuga assumenda animi.
+          Renting a car provides unmatched convenience and flexibility, whether you're on vacation, need a temporary vehicle, or want to explore new places. It allows you to travel at your own pace, without relying on public transportation schedules or expensive taxis, offering both comfort and privacy. Renting is also cost-effective, especially for short trips, as you avoid the maintenance expenses of owning a car. With a variety of options available, from compact cars for city driving to SUVs for adventurous outings, you can select the perfect vehicle for your needs. Best of all, there's no long-term commitment, making it an ideal solution for temporary stays or occasional use. Driveezz makes the process hassle-free, ensuring you have the right vehicle for any journey, whenever you need it.
+
+
           </p>
         </section>
         <section className="mb-8">
           <h2 className="text-sm font-semibold text-secondary">
-            Why should you choose Brandname Car Rentals?
+            Why should you choose Driveezz Car Rentals?
           </h2>
           <p className="text-xs">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iste
-            quibusdam repudiandae quae dolorum dicta, fuga, illum reprehenderit,
-            consequatur esse cum nostrum animi similique?
-          </p>
-          <p className="text-xs">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem amet
-            consequatur, qui illo laborum dolor in earum inventore ipsam
-            obcaecati delectus vitae voluptatum sequi blanditiis laudantium.
-            Temporibus ex, delectus itaque facilis nesciunt minus!
+          Choosing Driveezz Car Rentals ensures a seamless and reliable experience with our well-maintained fleet of vehicles and flexible rental options. Whether you need a car for a day or an entire month, we offer affordable rates, making it easy to find a plan that fits your budget. Our user-friendly booking process, 24/7 customer support, and commitment to safety and comfort set us apart. With Driveezz, you can explore Odisha at your own pace, without the hassle of public transportation or the limitations of traditional car rentals. Enjoy freedom, flexibility, and exceptional service every time you rent with us.
           </p>
         </section>
 
         <section className="mb-8">
           <h2 className="text-sm font-semibold text-secondary">
-            Hire Self-Drive Car with MyChoize's Online Car Booking Plan
+            Hire Self-Drive Car with Driveezz Online Car Booking Plan
           </h2>
           <p className="text-xs">
-            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio qui
-            accusamus voluptatibus vitae iusto distinctio optio aliquam! Dicta
-            culpa id quis! Commodi quas sequi nemo molestias. Asperiores sunt
-            nemo sit!
-          </p>
-          <p className="text-xs">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid
-            corporis, iusto illum omnis ipsa placeat, beatae alias, obcaecati
-            sunt rerum eligendi possimus animi quaerat quos cum dolore commodi
-            nesciunt non. Delectus aliquid a explicabo.
-          </p>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-sm font-semibold text-secondary">
-            Martul Subscription
-          </h2>
-          <p className="text-xs">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Placeat in
-            similique incidunt sint beatae cupiditate distinctio, voluptatum
-            voluptas corrupti praesentium autem, optio neque, itaque rerum!
-            Atque est quae praesentium aliquid!
-          </p>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-sm font-semibold text-secondary">
-            Mahindra Subscription
-          </h2>
-          <p className="text-xs">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores,
-            delectus! Delectus ipsum repellendus dolor doloribus perferendis
-            suscipit consequuntur commodi alias? Iusto quam placeat voluptate
-            quos alias voluptatem laudantium itaque, numquam enim reprehenderit?
-          </p>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-sm font-semibold text-secondary">
-            Toyota Subscription
-          </h2>
-          <p className="text-xs">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolores
-            enim at minima tempora praesentium minus quas, ipsa voluptatum qui
-            cumque amet doloremque dolorum possimus molestias sed? Aperiam, ut
-            molestias. Maiores autem, explicabo nesciunt impedit possimus quod
-            rem, incidunt minus, eaque molestiae sed suscipit voluptates iusto.
+          With Driveezz's online car booking plan, hiring a self-drive car has never been easier. Our intuitive platform allows you to choose from a wide selection of vehicles, all available at competitive rates. Whether you're planning a short trip or need a car for an extended period, our flexible booking options let you tailor the rental to your specific needs. Simply browse, select, and book your car online, and enjoy the freedom of self-driving anywhere in Odisha with Driveezz's hassle-free service.
           </p>
         </section>
       </div>

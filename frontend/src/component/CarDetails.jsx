@@ -91,8 +91,8 @@ export default function CarDetails() {
 
   return (
     <div className="bg-gray-100 min-h-screen p-6">
-      <div className="flex justify-center my-12">
-        <img src={car?.imgUrl} alt="Car Main" className=" rounded-lg" />
+      <div className="flex justify-center my-12 bg-white rounded-lg">
+        <img src={car?.imgUrl} alt="Car Main" className="w-1/3 h-1/3 rounded-lg" />
       </div>
 
       <div className="flex flex-col lg:flex-row gap-8">

@@ -38,7 +38,7 @@ const Header = () => {
     <nav className="bg-opacity-20 backdrop-blur-md w-50 fixed md:top-3 top-2 md:left-16 md:right-16 left-8 right-8 z-50 p-2 pl-6 rounded-full shadow-lg bg-zinc-100 dark:bg-zinc-800 transition-colors">
       <div className="max-w-7xl mx-auto flex justify-between items-center">
         <div className="text-xl font-bold text-gray-300 dark:text-primary-foreground">
-          BrandName
+          DRIVEEZZ
         </div>
         <div className="hidden md:flex space-x-4">
           {["Home", "Cars", "Contact", "About"].map((label) => (

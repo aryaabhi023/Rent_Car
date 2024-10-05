@@ -4,6 +4,6 @@ import { getAllAddress,createAddress,deleteAddress} from "../controller/address.
 const router = Router();
 router.route("/getAllAddress").get(getAllAddress);
 router.route("/createAddress").post(createAddress);
-router.route("deleteAddress/:id").delete(deleteAddress);
+router.route("/deleteAddress/:id").delete(deleteAddress);
 
 export { router };

@@ -26,7 +26,6 @@ export const createAddress=async(address)=>{
 export const deleteAddress=async(id)=>{
     try {
         const {data}=await axios.delete(api+'/deleteAddress/'+id);
-        console.log(data);
         return data;
     } catch (error) {
         console.log(error);
