@@ -67,25 +67,25 @@ const CarUpload = () => {
 
         <div className="flex space-x-4 mb-5">
           <div className="w-1/2">
-            <label className="block text-sm font-semibold text-muted-foreground" htmlFor="carName">Car Name</label>
+            <label className="block text-sm font-semibold text-muted-foreground" htmlFor="carName">Car Model</label>
             <input
               type="text"
               id="carName"
               name="carName"
               className="mt-2 block w-full p-3 bg-input border border-border rounded-lg text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
-              placeholder="Enter car name"
+              placeholder="Enter car model"
               value={car.carName}
               onChange={handleChange}
             />
           </div>
           <div className="w-1/2">
-            <label className="block text-sm font-semibold text-muted-foreground" htmlFor="model">Car Model</label>
+            <label className="block text-sm font-semibold text-muted-foreground" htmlFor="model">Car Brand</label>
             <input
               type="text"
               id="model"
               name="model"
               className="mt-2 block w-full p-3 bg-input border border-border rounded-lg text-foreground focus:ring-2 focus:ring-primary focus:border-primary"
-              placeholder="Enter car model"
+              placeholder="Enter car brand"
               value={car.model}
               onChange={handleChange}
             />
