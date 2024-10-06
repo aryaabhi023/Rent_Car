@@ -59,7 +59,7 @@ const SlideShow = () => {
             <div className="bg-white p-4 rounded-lg shadow-md m-4 md:m-2 block text-center transform transition-transform duration-500 ease-in-out hover:-translate-y-2">
               <img src={model.imgUrl} alt='Car-Image' className="w-full rounded-md" />
               <h3 className="mt-2 font-medium">{model.carName}</h3>
-              <div className="text-sm" onClick={()=>navigate(`/CarDetails/${model._id}`)}>View Details→</div>
+              <div className="text-sm cursor-pointer" onClick={()=>navigate(`/CarDetails/${model._id}`)}>View Details→</div>
             </div>
           </SwiperSlide>
         ))}

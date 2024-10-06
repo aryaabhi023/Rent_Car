@@ -61,7 +61,7 @@ export const sendEmail = async (req, res) => {
     const bookingDetails = req.body;
 
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtpout.secureserver.net",
       secure: true,
       port: 465,
       auth: {
@@ -71,22 +71,106 @@ export const sendEmail = async (req, res) => {
     });
 
     async function sendCustomerBookingEmail(customerEmail, bookingDetails) {
-      const info = await transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: customerEmail,
-        subject: "Your Booking Confirmation",
-        text: `Dear ${bookingDetails.name},\n\nYour booking details are as follows:\nCar Name: ${bookingDetails.carName}\nPickup Date: ${bookingDetails.pickupDate}\nPickup Address: ${bookingDetails.pickupAddress}\nDropoff Date: ${bookingDetails.dropoffDate}\nDropoff Address: ${bookingDetails.dropoffAddress}\n\nThank you for choosing us!`
-      });
-    }
+    const info = await transporter.sendMail({
+    from: process.env.EMAIL_USER,
+    to: customerEmail,
+    subject: "Your Booking Confirmation",
+    html: `
+      <div style="font-family: Arial, sans-serif; color: #333;">
+        <h2 style="color: #2F4F4F;">Dear ${bookingDetails.name},</h2>
+        <p>Thank you for choosing us for your car rental needs! We are pleased to confirm your booking with the following details:</p>
+        
+        <table style="width: 100%; border-collapse: collapse; margin-top: 10px;">
+          <tr>
+            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Car Name:</strong></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${bookingDetails.carName?bookingDetails.carName:'----'}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Pickup Date:</strong></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${bookingDetails.pickupDate}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Pickup Address:</strong></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${bookingDetails.pickupAddress}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Dropoff Date:</strong></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${bookingDetails.dropoffDate}</td>
+          </tr>
+          <tr>
+            <td style="padding: 8px; border: 1px solid #ddd;"><strong>Dropoff Address:</strong></td>
+            <td style="padding: 8px; border: 1px solid #ddd;">${bookingDetails.dropoffAddress}</td>
+          </tr>
+        </table>
 
-    async function sendOwnerBookingEmail(ownerEmail, bookingDetails) {
-      const info = await transporter.sendMail({
-        from: process.env.EMAIL_USER,
-        to: ownerEmail,
-        subject: "New Booking Received",
-        text: `Dear Owner,\n\nA new booking has been made with the following details:\nCustomer Name: ${bookingDetails.name}\nContact: ${bookingDetails.contact}\nCar Name: ${bookingDetails.carName}\nPickup Date: ${bookingDetails.pickupDate}\nPickup Address: ${bookingDetails.pickupAddress}\nDropoff Date: ${bookingDetails.dropoffDate}\nDropoff Address: ${bookingDetails.dropoffAddress}\n\nPlease confirm the booking at your earliest convenience.`
-       });
-    }
+        <p style="margin-top: 15px;">If you are unable to reach our location for pickup or dropoff, please note that an additional charge of <strong>Rs. 200</strong> per Pickup/Drop-off will apply.</p>
+
+        <p style="margin-top: 20px;">We look forward to serving you and hope you have a wonderful experience with our services!</p>
+        
+        <p style="margin-top: 20px;"><strong>Best Regards,</strong><br>
+        The DriveEzz Team</p>
+
+        <hr style="border: none; border-top: 1px solid #ddd; margin: 20px 0;">
+        
+        <footer style="font-size: 0.9em; color: #555;">
+          <p>If you have any questions or need further assistance, feel free to reach us at <a href="mailto:${process.env.EMAIL_USER}" style="color: #2F4F4F;">${process.env.EMAIL_USER}</a>.</p>
+        </footer>
+      </div>
+    `,
+  });
+}
+  
+async function sendOwnerBookingEmail(ownerEmail, bookingDetails) {
+  const info = await transporter.sendMail({
+    from: process.env.EMAIL_USER,
+    to: ownerEmail,
+    subject: "New Booking Received",
+    html: `
+      <div style="font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto; border: 1px solid #ddd; border-radius: 10px;">
+        <h2 style="color: #333;">New Booking Notification</h2>
+        <p>Dear Owner,</p>
+        <p>A new booking has been made. Here are the details:</p>
+        
+        <table style="width: 100%; border-collapse: collapse; margin: 20px 0;">
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Customer Name:</strong></td>
+            <td style="padding: 10px; border-bottom: 1px solid #ddd;">${bookingDetails.name}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Contact:</strong></td>
+            <td style="padding: 10px; border-bottom: 1px solid #ddd;">${bookingDetails.contact}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Car Name:</strong></td>
+            <td style="padding: 10px; border-bottom: 1px solid #ddd;">${bookingDetails.carName?bookingDetails.carName:'----'}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Pickup Date:</strong></td>
+            <td style="padding: 10px; border-bottom: 1px solid #ddd;">${bookingDetails.pickupDate}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Pickup Address:</strong></td>
+            <td style="padding: 10px; border-bottom: 1px solid #ddd;">${bookingDetails.pickupAddress}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Dropoff Date:</strong></td>
+            <td style="padding: 10px; border-bottom: 1px solid #ddd;">${bookingDetails.dropoffDate}</td>
+          </tr>
+          <tr>
+            <td style="padding: 10px; border-bottom: 1px solid #ddd;"><strong>Dropoff Address:</strong></td>
+            <td style="padding: 10px; border-bottom: 1px solid #ddd;">${bookingDetails.dropoffAddress}</td>
+          </tr>
+        </table>
+
+        <p>Please confirm the booking at your earliest convenience.</p>
+        <p style="margin: 0;">Best regards,</p>
+        <p style="margin: 0;"><strong>Driveezz Team</strong></p>
+        <hr style="border: 0; height: 1px; background: #ddd; margin: 20px 0;">
+        <p style="font-size: 12px; color: #888;">For any inquiries, please contact us at support@driveezz.in.</p>
+      </div>
+    `
+  });
+}
 
     async function handleBooking(bookingDetails) {
       // Check if bookingDetails contains email for customer
