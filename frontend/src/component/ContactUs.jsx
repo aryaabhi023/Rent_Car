@@ -28,7 +28,7 @@ export default function ContactUs() {
             ))}
         </div>
       </div>
-      <div className="fixed right-5 bottom-5">
+      <div className="fixed bottom-5 right-5 md:bottom-8 md:right-8">
         <a
           href="https://wa.me/9368764601?text=Hello%20there!"
           target="_blank"
@@ -36,8 +36,8 @@ export default function ContactUs() {
         >
           <img
             alt="whatsapp-icon"
-            src="https://ik.imagekit.io/abhi023/gifs/icons8-whatsapp.gif"
-            className="w-full"
+            src="https://img.icons8.com/?size=100&id=16713&format=png&color=000000"
+            className="w-12 md:w-16"
           />
         </a>
       </div>

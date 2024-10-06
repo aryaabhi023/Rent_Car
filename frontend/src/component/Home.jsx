@@ -257,19 +257,123 @@ export default function Home() {
               <span className="text-lg font-medium">Rejected</span>
             </button>
           </form>
-            <div>
-            <p className="block text-center text-red-400 mt-2">*You have to pay extra for 200 or 400 Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui.</p>
-            </div>
         </div>
       </div>
       <div>
-        <div className={`${isSmallScreen ? "flex" : "hidden"} mt-10`}>
+        <div className={`${isSmallScreen ? "flex flex-col" : "hidden"} mt-10`}>
           <button
-            className="bg-blue-400 hover:bg-blue-500 text-white rounded-lg p-3 mx-auto shadow-lg w-1/2"
+            className="bg-blue-400 hover:bg-blue-500 text-white rounded-lg p-3 mx-auto mt-4 shadow-lg w-1/2"
             onClick={() => navigate("/Cars")}
           >
             View Car
           </button>
+          <form className="bg-neutral-300 p-6 rounded-lg shadow-md w-11/12 p-2 mt-4 mx-auto" onSubmit={handleSubmit}>
+          <h2 className="text-lg font-semibold mb-4 text-center">Make a Booking Now</h2>
+          <div className='flex justify-between gap-4'>
+          <div className="mb-4 w-1/2">
+            <label className="block text-sm font-medium text-gray-700">Name</label>
+            <input
+              type="text"
+              name="name"
+              value={bookingDetails.name}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border rounded-md"
+              placeholder="Name"
+              required
+            />
+          </div>
+          <div className="mb-4 w-1/2">
+            <label className="block text-sm font-medium text-gray-700">Contact No.</label>
+            <input
+              type="text"
+              name="contact"
+              value={bookingDetails.contact}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border rounded-md"
+              placeholder="Contact No."
+              required
+            />
+          </div>
+          </div>
+          <div className='flex justify-between gap-4'>
+          <div className="mb-4 w-full">
+            <label className="block text-sm font-medium text-gray-700">Email</label>
+            <input
+              type="text"
+              name="email"
+              value={bookingDetails.email}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border rounded-md"
+              placeholder="Email"
+              required
+            />
+          </div>
+          </div>
+          <div className='flex justify-between gap-4'>
+          <div className="mb-4 w-full">
+            <label className="block text-sm font-medium text-gray-700">Pickup Date</label>
+            <input
+              type="datetime-local"
+              name="pickupDate"
+              value={bookingDetails.pickupDate}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border rounded-md"
+              placeholder="Pickup Date"
+              required
+            />
+          </div>
+          </div>
+          <div className='flex justify-between gap-4'>
+          <div className="mb-4 w-full">
+            <label className="block text-sm font-medium text-gray-700">Drop Off Date</label>
+            <input
+              type="datetime-local"
+              name="dropoffDate"
+              value={bookingDetails.dropoffDate}
+              onChange={handleChange}
+              min={bookingDetails.pickupDate}
+              className="mt-1 p-2 w-full border rounded-md"
+              placeholder="Drop Off Date"
+              required
+            />
+          </div>
+          </div>
+          <div className='flex justify-between gap-4'>
+          <div className="mb-4 w-1/2">
+            <label className="block text-sm font-medium text-gray-700">Pickup Address</label>
+            <input
+              type="text"
+              name="pickupAddress"
+              value={bookingDetails.pickupAddress}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border rounded-md"
+              placeholder="Pickup Address"
+              required
+            />
+          </div>
+          <div className="mb-4 w-1/2">
+            <label className="block text-sm font-medium text-gray-700">Drop Off Address</label>
+            <input
+              type="text"
+              name='dropoffAddress'
+              value={bookingDetails.dropoffAddress}
+              onChange={handleChange}
+              className="mt-1 p-2 w-full border rounded-md"
+              placeholder="Drop Off Address"
+              required
+            />
+          </div>
+          </div>
+          <button type='submit' className={`${showSubmit?"block":"hidden"} w-full bg-purple-600 text-white py-3 rounded-md font-semibold hover:bg-purple-700`}>
+            Book
+          </button>
+          <button className={`${showRequested?"block":"hidden"} w-full bg-green-500 text-white py-3 rounded-md font-semibold hover:bg-green-600`}>
+            Requested
+          </button>
+          <button className={`${showRejected?"block":"hidden"} w-full bg-red-500 text-white py-3 rounded-md font-semibold hover:bg-red-600`}>
+            Rejected
+          </button>
+          </form>
         </div>
         <div className="bg-background p-6">
           <h2 className="text-2xl font-bold text-primary mb-4 block text-center">

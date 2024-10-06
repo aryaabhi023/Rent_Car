@@ -132,10 +132,6 @@ export default function CarDetails() {
           </div>
         </div>
 
-          <div className='md:hidden'>
-            <p className="block text-center text-red-400 mt-2">*You have to pay extra for 200 or 400 Lorem ipsum dolor sit amet consectetur adipisicing elit. Qui.</p>
-          </div>
-
         <form className="bg-white p-6 rounded-lg shadow-md w-full lg:w-1/3" onSubmit={handleSubmit}>
           <h2 className="text-lg font-semibold mb-4 text-center">Book Information</h2>
           <div className='flex justify-between gap-4'>
